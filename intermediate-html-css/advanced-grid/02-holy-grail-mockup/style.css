@@ -1,6 +1,24 @@
 * {
   margin: 0;
   padding: 0;
+  font-size: 10px;
+}
+
+:root {
+  --eva-orange: #ff6600;
+  --eva-red: #ff0000;
+  --eva-black: #000;
+  --eva-white: #fff;
+  --eva-gray: #333;
+  --eva-green: #00ff00;
+  --eva-blue: #00bfff;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #000;
+  color: #fff;
+  line-height: 1.5;
 }
 
 .container {
@@ -8,48 +26,53 @@
 }
 
 .container div {
-  padding: 15px;
-  font-size: 32px;
+  padding: 1.5rem;
+  font-size: 3rem;
   font-family: Helvetica;
   font-weight: bold;
   color: white;
 }
 
 .header {
-  background-color: #393f4d;
+  background-color: #333;
+  box-shadow: 0 0 10px var(--eva-orange);
+  border-bottom: 2px solid var(--eva-orange);
 }
 
 .menu ul,
 .menu li {
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 .sidebar {
-  background-color: #C50208;
+  background-color: var(--eva-black);
+  border-right: 2px solid var(--eva-orange);
+  font-size: 1.5rem;
 }
 
 .sidebar .photo {
-  background-color: white;
-  color: black;
-  font-size: 12px;
+  background-color: var(--eva-gray);
   font-weight: normal;
-  border-radius: 10px;
 }
 
+.side-content {
+  background-color: var(--eva-gray);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid var(--eva-orange);
+}
 
-.sidebar .side-content {
-  background-color: white;
-  color: black;
-  font-size: 16px;
-  font-weight: normal;
+.photo {
+  background-color: var(--eva-gray);
+  padding: 20px;
 }
 
 .nav {
-  background-color: #C50208;
+  background-color: var(--eva-gray);
 }
 
 .nav ul li {
-  font-size: 16px;
+  font-size: 1.6rem;
   text-transform: uppercase;
 }
 
@@ -58,14 +81,14 @@
 }
 
 .article p {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-family: sans-serif;
   color: white;
   text-align: left;
 }
 
 .article .card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: black;
   text-align: center;
 }
@@ -73,19 +96,97 @@
 .card p {
   color: black;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .card .title {
-  font-size: 18px;
+  font-size: 1.8rem;
   text-align: center;
+}
+
+.card {
+  border: 1px solid var(--eva-orange);
+          background-color: var(--eva-gray);
 }
 
 .footer {
   background-color: #393f4d;
+  background-color: var(--eva-gray);
+          border-top: 2px solid var(--eva-orange);
 }
 
 .footer p {
-  font-size: 13px;
+  font-size: 1.3rem;
   font-weight: normal;
+}
+
+/* === Solution === */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 0.4rem;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.header,
+.footer {
+  grid-column: 1/ -1;
+}
+
+.logo {
+  justify-self: start;
+}
+
+.menu {
+  align-self: center;
+}
+
+.menu ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.menu ul,
+.menu li {
+  list-style: none;
+}
+
+.sidebar {
+  grid-column: 1;
+}
+
+.sidebar {
+  grid-row: 2 / 4;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.side-content,
+.photo {
+  display: grid;
+  align-items: center;
+}
+
+.nav ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.article {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.article .card {
+  height: 20rem;
+}
+
+.card p {
+  padding: 0.5rem;
 }
